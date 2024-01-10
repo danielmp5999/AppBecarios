@@ -228,7 +228,7 @@
                         ZIndex: =1
 
                         Button1 As button:
-                            DisplayMode: |-
+                            DisplayMode: |
                                 =//DisplayMode.Disabled &
                                 If(And(VarEntrada <= Value(Text(Now(),"hh","es-MX")), VarSalida > Value(Text(Now(),"hh","es-MX")),!(CountRows(colReg)>0)
                                     ),
