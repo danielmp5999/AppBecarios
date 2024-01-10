@@ -1,0 +1,37 @@
+App As appinfo:
+    BackEnabled: =true
+    OnStart: |-
+        =ClearCollect(colSideMenu, 
+            {
+                id:1,
+                label: "Registro Entrada/Salida",
+                icon: Icon.Bookmark,
+                iconColor: RGBA(141,198,63,1)
+            },
+            {
+                id:2,
+                label: "Actividades",
+                icon: Icon.DockCheckProperties,
+                iconColor: RGBA(141,198,63,1)
+            }
+        );
+        
+        //Administradores
+        If(Or(
+        User().Email = "dmendez@precitool.com",
+        User().Email = "storres@precitool.com",
+        User().Email = "cgutierrez@precitool.com",
+        User().Email = "mgonzalez@precitool.com"
+        ),
+            Set(varisAdmin, true),
+            Set(varisAdmin, false)
+        );
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+
