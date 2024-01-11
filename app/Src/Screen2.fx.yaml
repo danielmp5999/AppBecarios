@@ -91,11 +91,11 @@
                                 ValidacionText: ""
                             }); 
                             Clear(colReg);
-                            ForAll(Filter('RegistroEntrada/Salida','Created By'.Email=User().Email, ValidacionText = Text(Today(), "dd/mm/yyyy")),
+                            ForAll(Filter('RegistroEntrada/Salida','Creado por'.Email=User().Email, ValidacionText = Text(Today(), "dd/mm/yyyy")),
                                 Patch(colReg,Defaults(colReg),
                                     {
                                         ID: ID,
-                                        'Created By': 'Created By'.Email,
+                                        'Created By': 'Creado por'.Email,
                                         Entrada: HoraEntrada,
                                         Salida: HoraSalida,
                                         ValidacionText: ValidacionText
@@ -228,7 +228,7 @@
                         ZIndex: =1
 
                         Button1 As button:
-                            DisplayMode: |-
+                            DisplayMode: |
                                 =//DisplayMode.Disabled &
                                 If(And(VarEntrada <= Value(Text(Now(),"hh","es-MX")), VarSalida > Value(Text(Now(),"hh","es-MX")),!(CountRows(colReg)>0)
                                     ),
@@ -240,17 +240,17 @@
                                 =Set(varDateHour, Text( Now(), "dd/mm/yyyy hh:mm:ss" ));
                                 
                                 Patch('RegistroEntrada/Salida',{
-                                    Title:Text(Now()),
+                                    Título:Text(Now()),
                                     HoraEntrada:varDateHour,
                                     ValidacionText:Text(Today(),"dd/mm/yyyy")
                                 });
                                 
                                 Clear(colReg);
-                                ForAll(Filter('RegistroEntrada/Salida','Created By'.Email=User().Email, ValidacionText = Text(Today(), "dd/mm/yyyy")),
+                                ForAll(Filter('RegistroEntrada/Salida','Creado por'.Email=User().Email, ValidacionText = Text(Today(), "dd/mm/yyyy")),
                                     Patch(colReg,Defaults(colReg),
                                         {
                                                 ID: ID,
-                                                'Created By': 'Created By'.Email,
+                                                'Created By': 'Creado por'.Email,
                                                 Entrada: HoraEntrada,
                                                 Salida: HoraSalida,
                                                 ValidacionText: ValidacionText
@@ -267,7 +267,7 @@
                                     (
                                         CountRows(colReg)>0),
                                         //VarSalida > Value(Text(Now(),"hh","es-MX")), 
-                                        IsBlank(LookUp('RegistroEntrada/Salida',And('Created By'.Email = User().Email, ValidacionText = Text( Now(), "dd/mm/yyyy" ) )).HoraSalida)
+                                        IsBlank(LookUp('RegistroEntrada/Salida',And('Creado por'.Email = User().Email, ValidacionText = Text( Now(), "dd/mm/yyyy" ) )).HoraSalida)
                                     ),
                                     DisplayMode.Edit,
                                     DisplayMode.Disabled
@@ -277,7 +277,7 @@
                                 ForAll(
                                     Filter(
                                         'RegistroEntrada/Salida',
-                                        'Created By'.Email = User().Email,
+                                        'Creado por'.Email = User().Email,
                                         ValidacionText = Text(
                                             Today(),
                                             "dd/mm/yyyy"
@@ -288,7 +288,7 @@
                                         Defaults(colReg),
                                         {
                                             ID: ID,
-                                            'Created By': 'Created By'.Email,
+                                            'Created By': 'Creado por'.Email,
                                             Entrada: HoraEntrada,
                                             Salida: HoraSalida,
                                             ValidacionText: ValidacionText
@@ -365,7 +365,7 @@
                                             ID = VarID
                                         ),
                                         {
-                                            Title: Text(Now()),
+                                            Título: Text(Now()),
                                             HoraSalida: varDateHour,
                                             ValidacionText: Text(
                                                 Today(),
@@ -377,7 +377,7 @@
                                     ForAll(
                                         Filter(
                                             'RegistroEntrada/Salida',
-                                            'Created By'.Email = User().Email,
+                                            'Creado por'.Email = User().Email,
                                             ValidacionText = Text(
                                                 Today(),
                                                 "dd/mm/yyyy"
@@ -388,7 +388,7 @@
                                             Defaults(colReg),
                                             {
                                                 ID: ID,
-                                                'Created By': 'Created By'.Email,
+                                                'Created By': 'Creado por'.Email,
                                                 Entrada: HoraEntrada,
                                                 Salida: HoraSalida,
                                                 ValidacionText: ValidacionText
@@ -571,7 +571,7 @@
                                             ID = VarID
                                         ),
                                         {
-                                            Title: Text(Now()),
+                                            Título: Text(Now()),
                                             HoraSalida: varDateHour,
                                             //Concatenate(VarSalida,":00"),
                                 ValidacionText: Text(
@@ -588,7 +588,7 @@
                                     ForAll(
                                         Filter(
                                             'RegistroEntrada/Salida',
-                                            'Created By'.Email = User().Email,
+                                            'Creado por'.Email = User().Email,
                                             ValidacionText = Text(
                                                 Today(),
                                                 "dd/mm/yyyy"
@@ -599,7 +599,7 @@
                                             Defaults(colReg),
                                             {
                                                 ID: ID,
-                                                'Created By': 'Created By'.Email,
+                                                'Created By': 'Creado por'.Email,
                                                 Entrada: HoraEntrada,
                                                 Salida: HoraSalida,
                                                 ValidacionText: ValidacionText
@@ -815,7 +815,7 @@
                         Title_DataCard1 As typedDataCard.textualEditCard:
                             BorderStyle: =BorderStyle.Solid
                             DataField: ="Title"
-                            Default: =ThisItem.Title
+                            Default: =ThisItem.Título
                             DisplayMode: =Parent.DisplayMode
                             DisplayName: =DataSourceInfo([@Bitacora],DataSourceInfo.DisplayName,"Title")
                             Fill: =RGBA(0, 0, 0, 0)
@@ -1019,7 +1019,7 @@
                         Attachments_DataCard1 As typedDataCard.attachmentsEditCard:
                             BorderStyle: =BorderStyle.Solid
                             DataField: ="{Attachments}"
-                            Default: =ThisItem.Attachments
+                            Default: =ThisItem.'Datos adjuntos'
                             DisplayMode: =Parent.DisplayMode
                             DisplayName: =DataSourceInfo([@Bitacora],DataSourceInfo.DisplayName,"{Attachments}")
                             Fill: =RGBA(0, 0, 0, 0)
@@ -1138,7 +1138,7 @@
                         PaddingRight: =0
                         PaddingTop: =0
                         Text: |-
-                            ="Título: "&ThisItem.Title
+                            ="Título: "&ThisItem.Título
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Parent.TemplateWidth - 173
                         X: =20
@@ -1200,7 +1200,7 @@
                         PaddingRight: =0
                         PaddingTop: =0
                         Text: |-
-                            ="Fecha: "&ThisItem.Created
+                            ="Fecha: "&ThisItem.Creado
                         VerticalAlign: =VerticalAlign.Top
                         Width: =Title3.Width
                         X: =Title3.X
