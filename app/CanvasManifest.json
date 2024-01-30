@@ -94,6 +94,7 @@
       "useexperimentalsqlconnector": true,
       "useguiddatatypes": true,
       "usenonblockingonstartrule": true,
+      "userdefinedfunctions": false,
       "webbarcodescanner": false,
       "zeroalltabindexes": false
     },
@@ -129,7 +130,7 @@
     "PublishDataLocally": false,
     "PublishResourcesLocally": false,
     "PublishTarget": "player",
-    "UserLocale": "es-ES"
+    "UserLocale": "en-US"
   },
   "ScreenOrder": [
     "Screen2",
