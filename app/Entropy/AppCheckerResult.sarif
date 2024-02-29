@@ -1402,17 +1402,17 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.varMinutosIniciall"
+                  "fullyQualifiedName": "App.varHorasIniciall"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "App.varMinutosIniciall",
+                  "fullyQualifiedName": "App.varHorasIniciall",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "varMinutosIniciall",
+                "member": "varHorasIniciall",
                 "module": "App",
                 "type": "App"
               }
@@ -1432,17 +1432,17 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "App.varHorasIniciall"
+                  "fullyQualifiedName": "App.varMinutosIniciall"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "App.varHorasIniciall",
+                  "fullyQualifiedName": "App.varMinutosIniciall",
                   "relativeAddress": 0
                 }
               },
               "properties": {
-                "member": "varHorasIniciall",
+                "member": "varMinutosIniciall",
                 "module": "App",
                 "type": "App"
               }
