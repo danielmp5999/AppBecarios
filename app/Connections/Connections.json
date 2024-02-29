@@ -1,0 +1,84 @@
+{
+  "11c9d63a-2b7e-465d-8b37-d4344df9e73a": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read",
+      "providers/PowerPlatform.Governance/Operations/Write",
+      "providers/PowerPlatform.Governance/Operations/Delete"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1676/1.0.1676.3617/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://precitool.sharepoint.com/sites/BecariosPrimavera2024": {
+        "dataSources": {
+          "Becarios": {
+            "tableName": "685faf2a-f304-4463-affc-fc836691ba8c"
+          },
+          "Bitacora": {
+            "tableName": "96646823-a56b-4c51-ae9a-69517b042032"
+          },
+          "Horarios": {
+            "tableName": "180afb60-5ad7-4f4d-b33d-87fe0d98f206"
+          },
+          "RegistroEntrada/Salida": {
+            "tableName": "4bcf9a6c-0fd5-403c-852c-8f704b6bd8d7"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Bitacora",
+      "Horarios",
+      "RegistroEntrada/Salida",
+      "Becarios"
+    ],
+    "dependencies": {},
+    "dependents": [
+      "2667fce0-d652-476f-b962-33dc681702ef"
+    ],
+    "id": "11c9d63a-2b7e-465d-8b37-d4344df9e73a"
+  },
+  "2667fce0-d652-476f-b962-33dc681702ef": {
+    "appActions": [
+      "Run"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Flujos lógicos",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "11c9d63a-2b7e-465d-8b37-d4344df9e73a": {
+          "value": "shared_sharepointonline"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "eaaf49ac-c4a0-4f37-98d3-d574f429a026"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_sharepointonline": {
+          "value": "11c9d63a-2b7e-465d-8b37-d4344df9e73a"
+        },
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "eaaf49ac-c4a0-4f37-98d3-d574f429a026"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "CrearArchivo"
+    ],
+    "dependencies": {
+      "shared_sharepointonline": "11c9d63a-2b7e-465d-8b37-d4344df9e73a"
+    },
+    "dependents": [],
+    "id": "2667fce0-d652-476f-b962-33dc681702ef"
+  }
+}

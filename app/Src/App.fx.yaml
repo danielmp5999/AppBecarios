@@ -1,0 +1,104 @@
+App As appinfo:
+    BackEnabled: =true
+    OnStart: |-
+        =ClearCollect(colSideMenu, 
+            {
+                id:1,
+                label: "Registro Entrada/Salida",
+                icon: Icon.Bookmark,
+                iconColor: RGBA(141,198,63,1)
+            },
+            {
+                id:2,
+                label: "Actividades",
+                icon: Icon.DockCheckProperties,
+                iconColor: RGBA(141,198,63,1)
+            }    
+        );
+        ClearCollect(colAux,
+            {
+                email:User().Email,
+                IsAdmin:LookUp(Becarios,Becario.Email=User().Email).IsAdmin
+                
+            }
+        );
+        
+        //Administradores
+        
+        If(/*Or(
+        User().Email = "dmendez@precitool.com";
+        User().Email = "storres@precitool.com";
+        User().Email = "cgutierrez@precitool.com";
+        User().Email = "mgonzalez@precitool.com";
+        User().Email = "becario6@precitool.com"
+        )*/
+        LookUp(Becarios,Becario.Email=User().Email,IsAdmin),
+            Set(varisAdmin, true),
+            Set(varisAdmin, false)
+        );
+        
+        Set(VarEntrada, 
+            Value(
+                Left(
+                    LookUp(Horarios, And(Becario.Email = User().Email, Dia.Value = Text(Today(),"dddd","es-MX")),HoraInicio).Value
+                    ,2
+                )
+            )
+        );
+        Set(VarSalida, 
+            Value(
+                Left(
+                    LookUp(Horarios, And(Becario.Email = User().Email, Dia.Value = Text(Today(),"dddd","es-MX")),HoraFin).Value
+                    ,2
+                )
+            )
+        );
+        
+        Refresh(Becarios);
+            Refresh(Bitacora);
+            Refresh(Horarios);
+            Refresh('RegistroEntrada/Salida');
+            Collect(colReg,{
+                ID: 1,
+                'Created By': "",
+                Entrada: "",
+                Salida: "", 
+                ValidacionText: "",
+                Id_Actividad: LookUp(Bitacora,ID=0)        
+            }); 
+            Clear(colReg);
+            ForAll(Filter('RegistroEntrada/Salida','Created By'.Email=User().Email, ValidacionText = Text(Today(), "dd/mm/yyyy")),
+                Patch(colReg,Defaults(colReg),
+                    {
+                        ID: ID,
+                        'Created By': 'Created By'.Email,
+                        Entrada: HoraEntrada,
+                        Salida: HoraSalida,
+                        ValidacionText: ValidacionText,
+                        Id_Actividad: LookUp(Bitacora,ID=0)
+                    }
+                )
+            );
+        
+        If(varisAdmin,
+            Collect(colSideMenu,
+            {
+                id:3,
+                label: "Administrar Usuarios",
+                icon: Icon.DockCheckProperties,
+                iconColor: RGBA(141,198,63,1)
+            })
+        );
+        If(
+                IsBlank(DataCardKey20.Text),
+                Set(P,true)
+        );
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+
