@@ -718,7 +718,9 @@
                             PaddingRight: =0
                             PaddingTop: =0
                             Text: |-
-                                ="Creado por: "&ThisItem.'¿Quién asignó?'.DisplayName
+
+                                ="Becario: "&ThisItem.'Created By'.DisplayName
+
                             VerticalAlign: =VerticalAlign.Top
                             Width: =Title3.Width
                             X: =Title3.X
