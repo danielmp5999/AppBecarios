@@ -208,7 +208,9 @@
   },
   "FunctionParamsInvariantScripts": {},
   "FunctionParamsInvariantScriptsOnInstances": {},
+
   "HeaderLastSavedDateTimeUTC": "03/11/2024 20:05:47",
+
   "IsLegacyComponentAllowGlobalScopeCase": false,
   "LocalConnectionIDReferences": {
     "11c9d63a-2b7e-465d-8b37-d4344df9e73a": "\"/providers/microsoft.powerapps/apis/shared_sharepointonline/connections/602c0860c99744608854135f29599242\"",
@@ -669,6 +671,7 @@
   "TemplateVersions": {},
   "VolatileProperties": {
     "AnalysisLoadTime": 1.1473019,
+
     "ControlCount": {
       "attachments": 1,
       "button": 10,
